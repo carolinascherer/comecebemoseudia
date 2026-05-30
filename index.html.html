@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Comece Bem o Seu Dia</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:'Poppins', sans-serif;
+      background:#fff5fa;
+      color:#4c3751;
+      overflow-x:hidden;
+    }
+
+    .bg-glow{
+      position:fixed;
+      width:700px;
+      height:700px;
+      border-radius:50%;
+      background:radial-gradient(circle,#ff77c83d 0%, transparent 70%);
+      top:-250px;
+      right:-200px;
+      z-index:-1;
+    }
+
+    .bg-glow2{
+      position:fixed;
+      width:500px;
+      height:500px;
+      border-radius:50%;
+      background:radial-gradient(circle,#ffb1de4d 0%, transparent 70%);
+      bottom:-200px;
+      left:-150px;
+      z-index:-1;
+    }
+
+    .container{
+      width:100%;
+      max-width:1200px;
+      margin:auto;
+      padding:20px;
+    }
+
+    .hero{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      padding:80px 0;
+    }
+
+    .hero-content{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:70px;
+      align-items:center;
+    }
+
+    .tag{
+      display:inline-block;
+      background:#ffe1f1;
+      color:#ff4fa8;
+      padding:10px 18px;
+      border-radius:100px;
+      font-size:14px;
+      font-weight:600;
+      margin-bottom:25px;
+    }
+
+    h1{
+      font-size:68px;
+      line-height:1.05;
+      font-weight:800;
+      margin-bottom:25px;
+      color:#ff4fa8;
+    }
+
+    .hero p{
+      font-size:20px;
+      line-height:1.8;
+      margin-bottom:35px;
+      color:#71556f;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      text-decoration:none;
+      padding:22px 40px;
+      border-radius:18px;
+      background:linear-gradient(135deg,#ff4fa8,#ff89c7);
+      color:white;
+      font-size:18px;
+      font-weight:700;
+      box-shadow:0 20px 50px rgba(255,79,168,.25);
+      transition:.3s;
+    }
+
+    .btn:hover{
+      transform:translateY(-3px) scale(1.02);
+      box-shadow:0 25px 60px rgba(255,79,168,.35);
+    }
+
+    .book-wrap{
+      display:flex;
+      justify-content:center;
+      position:relative;
+    }
+
+    .book-wrap::before{
+      content:'';
+      position:absolute;
+      width:380px;
+      height:380px;
+      background:radial-gradient(circle,#ff9fd53b 0%, transparent 70%);
+      border-radius:50%;
+      top:50%;
+      left:50%;
+      transform:translate(-50%,-50%);
+    }
+
+    .book{
+      width:360px;
+      border-radius:30px;
+      overflow:hidden;
+      position:relative;
+      z-index:2;
+      box-shadow:0 35px 80px rgba(255,79,168,.25);
+      transition:.4s;
+    }
+
+    .book:hover{
+      transform:translateY(-8px) rotate(-1deg);
+    }
+
+    .book img{
+      width:100%;
+      display:block;
+    }
+
+    .section{
+      padding:110px 0;
+    }
+
+    .title{
+      text-align:center;
+      font-size:46px;
+      font-weight:800;
+      margin-bottom:18px;
+      color:#ff4fa8;
+    }
+
+    .subtitle{
+      text-align:center;
+      max-width:760px;
+      margin:auto;
+      color:#755f73;
+      font-size:19px;
+      margin-bottom:60px;
+      line-height:1.8;
+    }
+
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:25px;
+    }
+
+    .card{
+      background:white;
+      border-radius:28px;
+      padding:35px;
+      box-shadow:0 15px 40px rgba(255,79,168,.08);
+      transition:.3s;
+      border:1px solid #ffe4f2;
+    }
+
+    .card:hover{
+      transform:translateY(-5px);
+    }
+
+    .card h3{
+      margin-bottom:15px;
+      font-size:23px;
+      color:#ff4fa8;
+    }
+
+    .card p{
+      color:#6f5a6d;
+      line-height:1.8;
+    }
+
+    .quote-area{
+      margin-top:70px;
+      background:linear-gradient(135deg,#ff4fa8,#ff9cd1);
+      padding:60px;
+      border-radius:35px;
+      color:white;
+      text-align:center;
+      box-shadow:0 20px 60px rgba(255,79,168,.18);
+    }
+
+    .quote{
+      font-size:28px;
+      line-height:1.6;
+      margin-bottom:25px;
+      font-weight:600;
+    }
+
+    .benefits{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:25px;
+      margin-top:50px;
+    }
+
+    .benefit{
+      background:white;
+      padding:28px;
+      border-radius:24px;
+      border:1px solid #ffe6f2;
+      box-shadow:0 12px 30px rgba(255,79,168,.06);
+    }
+
+    .benefit span{
+      display:block;
+      font-size:18px;
+      font-weight:600;
+      color:#ff4fa8;
+      margin-bottom:10px;
+    }
+
+    .cta{
+      padding:130px 20px;
+      text-align:center;
+    }
+
+    .cta-box{
+      max-width:950px;
+      margin:auto;
+      background:white;
+      border-radius:40px;
+      padding:70px 50px;
+      box-shadow:0 30px 80px rgba(255,79,168,.10);
+      border:1px solid #ffe3f0;
+    }
+
+    .cta h2{
+      font-size:54px;
+      color:#ff4fa8;
+      margin-bottom:20px;
+    }
+
+    .cta p{
+      font-size:20px;
+      line-height:1.9;
+      color:#6e5a6d;
+      max-width:700px;
+      margin:auto;
+      margin-bottom:40px;
+    }
+
+    .small{
+      margin-top:20px;
+      color:#9b8197;
+      font-size:14px;
+    }
+
+    footer{
+      padding:40px 20px;
+      text-align:center;
+      color:#9b8197;
+    }
+
+    @media(max-width:980px){
+
+      .hero-content{
+        grid-template-columns:1fr;
+      }
+
+      .book-wrap{
+        order:-1;
+      }
+
+      h1{
+        font-size:48px;
+      }
+
+      .title{
+        font-size:38px;
+      }
+
+      .cta h2{
+        font-size:42px;
+      }
+
+    }
+
+    @media(max-width:600px){
+
+      h1{
+        font-size:40px;
+      }
+
+      .hero p{
+        font-size:18px;
+      }
+
+      .book{
+        width:100%;
+        max-width:330px;
+      }
+
+      .btn{
+        width:100%;
+      }
+
+      .quote{
+        font-size:22px;
+      }
+
+      .quote-area{
+        padding:40px 25px;
+      }
+
+      .cta-box{
+        padding:50px 25px;
+      }
+
+      .cta h2{
+        font-size:34px;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div class="bg-glow"></div>
+  <div class="bg-glow2"></div>
+
+  <section class="hero">
+
+    <div class="container">
+
+      <div class="hero-content">
+
+        <div>
+
+          <div class="tag">
+            ✨ CONTEÚDO GRATUITO
+          </div>
+
+          <h1>
+            Transforme suas manhãs e desperte sua melhor versão 🌸
+          </h1>
+
+          <p>
+            Receba gratuitamente o livro <strong>“Comece Bem o Seu Dia”</strong> e descubra afirmações poderosas para ansiedade, autoestima, prosperidade, cura emocional e conexão espiritual.
+          </p>
+
+          <a 
+            href="https://chat.whatsapp.com/IIDCjojdqc11QSKJFWAaUf?mode=gi_t"
+            target="_blank"
+            class="btn"
+          >
+            QUERO ENTRAR NO GRUPO 💖
+          </a>
+
+        </div>
+
+        <div class="book-wrap">
+
+          <div class="book">
+
+            <!-- FOTO DA CAPA -->
+            <img 
+              src="https://i.ibb.co/SDv0McY3/DIA-CAROLINA-SCHERER.png" 
+              alt="Livro Comece Bem o Seu Dia"
+            >
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <section class="section">
+
+    <div class="container">
+
+      <h2 class="title">
+        O que você vai encontrar dentro do livro?
+      </h2>
+
+      <p class="subtitle">
+        Um verdadeiro ritual diário para transformar sua energia emocional, fortalecer sua mente e trazer mais paz para sua vida.
+      </p>
+
+      <div class="cards">
+
+        <div class="card">
+          <h3>💖 Autoestima</h3>
+          <p>
+            Afirmações para fortalecer seu amor-próprio, autoconfiança e merecimento.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>🌿 Ansiedade</h3>
+          <p>
+            Exercícios mentais e afirmações para acalmar pensamentos acelerados.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>✨ Prosperidade</h3>
+          <p>
+            Mentalidade de abundância, prosperidade financeira e expansão pessoal.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>🌙 Espiritualidade</h3>
+          <p>
+            Conexão energética, espiritual e fortalecimento interior.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>🔥 Cura Emocional</h3>
+          <p>
+            Libertação emocional, acolhimento e transformação interna.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>🌸 Energia Feminina</h3>
+          <p>
+            Reconexão com sua essência feminina e sua força interior.
+          </p>
+        </div>
+
+      </div>
+
+      <div class="quote-area">
+
+        <div class="quote">
+          “Estou no controle da minha mente e das minhas emoções.”
+        </div>
+
+        <div class="quote">
+          “Minha mentalidade é de abundância.”
+        </div>
+
+        <div class="quote">
+          “Cada respiração que eu tomo é um passo em direção à cura profunda do meu ser.”
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <section class="section">
+
+    <div class="container">
+
+      <h2 class="title">
+        Esse livro é para você que...
+      </h2>
+
+      <div class="benefits">
+
+        <div class="benefit">
+          <span>🌷 Está emocionalmente cansada</span>
+          Precisa reencontrar sua paz interior e voltar a se sentir bem consigo mesma.
+        </div>
+
+        <div class="benefit">
+          <span>💭 Sofre com ansiedade</span>
+          Quer aprender a controlar pensamentos negativos e emoções intensas.
+        </div>
+
+        <div class="benefit">
+          <span>✨ Deseja uma nova energia</span>
+          Quer começar seus dias com mais leveza, clareza e positividade.
+        </div>
+
+        <div class="benefit">
+          <span>💖 Busca autoestima</span>
+          Quer voltar a acreditar em si mesma e reconhecer seu valor.
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <section class="cta">
+
+    <div class="cta-box">
+
+      <h2>
+        Receba Gratuitamente Agora ✨
+      </h2>
+
+      <p>
+        Entre no grupo exclusivo do WhatsApp e receba imediatamente o livro completo + conteúdos especiais de transformação emocional e espiritual.
+      </p>
+
+      <a 
+        href="https://chat.whatsapp.com/IIDCjojdqc11QSKJFWAaUf?mode=gi_t"
+        target="_blank"
+        class="btn"
+      >
+        ENTRAR NO GRUPO AGORA 💖
+      </a>
+
+      <div class="small">
+        Acesso gratuito • Conteúdo exclusivo • Transformação diária
+      </div>
+
+    </div>
+
+  </section>
+
+  <footer>
+    © 2026 • Carolina Scherer • Todos os direitos reservados
+  </footer>
+
+</body>
+								
+				</html>
